@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Perhitungan Gaji</title>
+    <style>
+      .judul {
+        text-align: center;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="form1">
+      <h2>PERHITUNGAN GAJI</h2>
+      <table border="1">
+        <tr>
+          <td colspan="2">
+            <h2 class="judul">PERHITUNGAN GAJI</h2>
+          </td>
+        </tr>
+        <tr>
+          <td>Golongan</td>
+          <td>
+            <select name="gol">
+              <option value="I">I</option>
+              <option value="II">II</option>
+              <option value="III">III</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Jumlah Anak</td>
+          <td><input type="text" name="anak" size="10" maxlength="10" /></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input type="button" name="hitung" value="Hitung" onclick="hit()" />
+            <input type="reset" name="Batal" value="Cancel" />
+          </td>
+        </tr>
+        <tr>
+          <td>Gaji Pokok</td>
+          <td><input type="text" name="gapok" readonly /></td>
+        </tr>
+        <tr>
+          <td>Tunjangan</td>
+          <td><input type="text" name="tunjangan" readonly /></td>
+        </tr>
+        <tr>
+          <td>Gaji Bersih</td>
+          <td><input type="text" name="gaji" readonly /></td>
+        </tr>
+      </table>
+    </form>
+    <script>
+      function hit() {
+        var gol = document.form1.gol.value;
+        var anak = parseInt(document.form1.anak.value);
+        var gapok, tunjangan, persenTunjangan, gaji;
+        if (gol == "I") {
+          gapok = 250000;
+          persenTunjangan = 0.05;
+        } else if (gol == "II") {
+          gapok = 300000;
+          persenTunjangan = 0.1;
+        } else if (gol == "III") {
+          gapok = 350000;
+          persenTunjangan = 0.15;
+        }
+        tunjangan = anak * gapok * persenTunjangan;
+        gaji = gapok + tunjangan;
+        document.form1.gapok.value = gapok;
+        document.form1.tunjangan.value = tunjangan;
+        document.form1.gaji.value = gaji;
+      }
+    </script>
+  </body>
+</html>
